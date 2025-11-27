@@ -39,49 +39,104 @@
         <!-- Фильтры -->
         <Border Grid.Row="1"
                 Background="{StaticResource SurfaceColor}"
-                Padding="20,15"
+                Padding="25,20"
                 Margin="20,20,20,0">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.1" Direction="270"/>
             </Border.Effect>
-            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBox x:Name="TxtSearch"
-                        Width="300"
-                        Height="35"
-                        Margin="5"
-                        Style="{StaticResource ModernTextBox}"
-                        Tag="Поиск по названию..."/>
-                <ComboBox x:Name="CmbCity"
-                         Width="150"
-                         Height="35"
-                         Margin="5"
-                         Style="{StaticResource ModernComboBox}"
-                         DisplayMemberPath="CityName"/>
-                <ComboBox x:Name="CmbCategory"
-                         Width="150"
-                         Height="35"
-                         Margin="5"
-                         Style="{StaticResource ModernComboBox}"
-                         DisplayMemberPath="CategoryName"/>
-                <ComboBox x:Name="CmbType"
-                         Width="130"
-                         Height="35"
-                         Margin="5"
-                         Style="{StaticResource ModernComboBox}"
-                         DisplayMemberPath="TypeName"/>
-                <ComboBox x:Name="CmbStatus"
-                         Width="130"
-                         Height="35"
-                         Margin="5"
-                         Style="{StaticResource ModernComboBox}"
-                         DisplayMemberPath="StatusName"/>
-                <Button Content="Поиск"
-                       Width="110"
-                       Height="35"
-                       Margin="5"
-                       Style="{StaticResource PrimaryButton}"
-                       Click="BtnSearch_Click"/>
-            </WrapPanel>
+            <StackPanel>
+                <!-- Заголовок фильтров -->
+                <TextBlock Text="Фильтры поиска"
+                          FontSize="16"
+                          FontWeight="SemiBold"
+                          Foreground="{StaticResource TextPrimaryColor}"
+                          Margin="0,0,0,15"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Контейнер фильтров -->
+                    <WrapPanel Grid.Column="0" VerticalAlignment="Center">
+                        <!-- Поиск -->
+                        <StackPanel Margin="0,0,15,0">
+                            <TextBlock Text="Поиск"
+                                      FontSize="12"
+                                      Foreground="{StaticResource TextSecondaryColor}"
+                                      Margin="0,0,0,5"/>
+                            <TextBox x:Name="TxtSearch"
+                                    Width="280"
+                                    Height="38"
+                                    Style="{StaticResource ModernTextBox}"
+                                    Tag="Введите название..."/>
+                        </StackPanel>
+
+                        <!-- Город -->
+                        <StackPanel Margin="0,0,15,0">
+                            <TextBlock Text="Город"
+                                      FontSize="12"
+                                      Foreground="{StaticResource TextSecondaryColor}"
+                                      Margin="0,0,0,5"/>
+                            <ComboBox x:Name="CmbCity"
+                                     Width="140"
+                                     Height="38"
+                                     Style="{StaticResource ModernComboBox}"
+                                     DisplayMemberPath="CityName"/>
+                        </StackPanel>
+
+                        <!-- Категория -->
+                        <StackPanel Margin="0,0,15,0">
+                            <TextBlock Text="Категория"
+                                      FontSize="12"
+                                      Foreground="{StaticResource TextSecondaryColor}"
+                                      Margin="0,0,0,5"/>
+                            <ComboBox x:Name="CmbCategory"
+                                     Width="150"
+                                     Height="38"
+                                     Style="{StaticResource ModernComboBox}"
+                                     DisplayMemberPath="CategoryName"/>
+                        </StackPanel>
+
+                        <!-- Тип -->
+                        <StackPanel Margin="0,0,15,0">
+                            <TextBlock Text="Тип"
+                                      FontSize="12"
+                                      Foreground="{StaticResource TextSecondaryColor}"
+                                      Margin="0,0,0,5"/>
+                            <ComboBox x:Name="CmbType"
+                                     Width="120"
+                                     Height="38"
+                                     Style="{StaticResource ModernComboBox}"
+                                     DisplayMemberPath="TypeName"/>
+                        </StackPanel>
+
+                        <!-- Статус -->
+                        <StackPanel Margin="0,0,0,0">
+                            <TextBlock Text="Статус"
+                                      FontSize="12"
+                                      Foreground="{StaticResource TextSecondaryColor}"
+                                      Margin="0,0,0,5"/>
+                            <ComboBox x:Name="CmbStatus"
+                                     Width="120"
+                                     Height="38"
+                                     Style="{StaticResource ModernComboBox}"
+                                     DisplayMemberPath="StatusName"/>
+                        </StackPanel>
+                    </WrapPanel>
+
+                    <!-- Кнопка поиска -->
+                    <Button Grid.Column="1"
+                           Content="Найти"
+                           Width="120"
+                           Height="38"
+                           Margin="15,17,0,0"
+                           VerticalAlignment="Bottom"
+                           Style="{StaticResource PrimaryButton}"
+                           Click="BtnSearch_Click"/>
+                </Grid>
+            </StackPanel>
         </Border>
 
         <!-- Список объявлений -->
@@ -98,22 +153,8 @@
                             <DataTemplate>
                                 <Grid Width="100" Height="100">
                                     <Border CornerRadius="4" ClipToBounds="True">
-                                        <Image Source="{Binding PhotoPath, FallbackValue=/Resources/vozvrat-tovara.png}"
+                                        <Image Source="{Binding PhotoPath, FallbackValue=/Resources/icon-clothes.png}"
                                               Stretch="UniformToFill"/>
-                                    </Border>
-                                    <!-- Иконка категории -->
-                                    <Border Width="60" Height="60"
-                                           CornerRadius="30"
-                                           Background="White"
-                                           HorizontalAlignment="Right"
-                                           VerticalAlignment="Bottom"
-                                           Margin="0,0,5,5">
-                                        <Border.Effect>
-                                            <DropShadowEffect ShadowDepth="2" BlurRadius="8" Opacity="0.4"/>
-                                        </Border.Effect>
-                                        <Image Width="45" Height="45"
-                                              Source="/Resources/icon-electronics.png"
-                                              Stretch="Uniform"/>
                                     </Border>
                                 </Grid>
                             </DataTemplate>
