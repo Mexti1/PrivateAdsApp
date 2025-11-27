@@ -153,7 +153,7 @@
                             <DataTemplate>
                                 <Grid Width="100" Height="100">
                                     <Border CornerRadius="4" ClipToBounds="True">
-                                        <Image Source="{Binding PhotoPath, FallbackValue=/Resources/icon-clothes.png}"
+                                        <Image Source="/Resources/icon-clothes.png"
                                               Stretch="UniformToFill"/>
                                     </Border>
                                 </Grid>
