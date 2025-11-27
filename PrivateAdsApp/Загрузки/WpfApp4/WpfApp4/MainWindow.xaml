@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfApp4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Payment App" Height="600" Width="800"
+        Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <!-- Кнопка Назад -->
+        <Button Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Center" Click="BackButton_Click"/>
+        <!-- Frame для страниц -->
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <!-- Дата и время -->
+        <TextBlock x:Name="DateTimeNow" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+    </Grid>
+</Window>

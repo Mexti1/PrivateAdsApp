@@ -1,0 +1,23 @@
+﻿<Page x:Class="WpfApp3.Pages.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Пользователь">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,0,8">
+            <TextBlock Text="Фильтр по категории:" VerticalAlignment="Center" Margin="0,0,6,0"/>
+            <ComboBox x:Name="comboCategoryFilter" Width="200" Margin="0,0,12,0"/>
+            <TextBlock Text="Дата с:" VerticalAlignment="Center" Margin="0,0,6,0"/>
+            <DatePicker x:Name="dateFrom" Width="130" Margin="0,0,6,0"/>
+            <TextBlock Text="по:" VerticalAlignment="Center" Margin="0,0,6,0"/>
+            <DatePicker x:Name="dateTo" Width="130" Margin="0,0,6,0"/>
+            <Button Content="Применить" Click="ApplyFilter_Click" Margin="6"/>
+        </StackPanel>
+
+        <DataGrid x:Name="PaymentGrid" Grid.Row="1" AutoGenerateColumns="True" IsReadOnly="True"/>
+    </Grid>
+</Page>

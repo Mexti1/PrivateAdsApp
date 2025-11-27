@@ -1,0 +1,10 @@
+<Page x:Class="Djabarov_Mekhty_4ISIP_422.Pages.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Пользователь">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Страница пользователя" FontSize="16" TextAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Page>

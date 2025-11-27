@@ -1,0 +1,15 @@
+﻿<Page x:Class="WpfApp4.Pages.ChangePassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Смена пароля">
+    <Grid>
+        <!-- Аналогичная разметка как в RegPage, но поля: Старый пароль, Новый, Подтверждение -->
+        <Label Content="Старый пароль" HorizontalAlignment="Left" Margin="91,65,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label Content="Новый пароль" HorizontalAlignment="Left" Margin="91,118,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label Content="Подтвердите новый пароль" HorizontalAlignment="Left" Margin="91,171,0,0" VerticalAlignment="Top" Width="169"/>
+        <PasswordBox x:Name="oldPassBx" ToolTip="Введите старый пароль" HorizontalAlignment="Left" Margin="339,65,0,0" VerticalAlignment="Top" Width="182" Height="33"/>
+        <PasswordBox x:Name="newPassBx" ToolTip="Введите новый пароль" HorizontalAlignment="Left" Margin="339,118,0,0" VerticalAlignment="Top" Width="182" Height="33"/>
+        <PasswordBox x:Name="confirmNewPassBx" ToolTip="Повторите новый пароль" HorizontalAlignment="Left" Margin="339,171,0,0" VerticalAlignment="Top" Width="182" Height="33"/>
+        <Button x:Name="changeButton" Content="Сменить пароль" HorizontalAlignment="Left" Margin="345,250,0,0" VerticalAlignment="Top" Width="170" Click="changeButton_Click"/>
+    </Grid>
+</Page>

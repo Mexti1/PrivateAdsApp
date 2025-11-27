@@ -1,0 +1,74 @@
+﻿<Window x:Class="AdsClientWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Редактирование объявления" Height="600" Width="700" WindowStartupLocation="CenterOwner">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <TextBlock FontSize="18" FontWeight="Bold" Text="{Binding WindowTitle}" />
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                <Label>Заголовок</Label>
+                <TextBox x:Name="txtTitle" />
+                <Label Margin="0,8,0,0">Описание</Label>
+                <TextBox x:Name="txtDescription" AcceptsReturn="True" Height="200" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                    <StackPanel>
+                        <Label>Цена</Label>
+                        <TextBox x:Name="txtPrice" Width="120"/>
+                    </StackPanel>
+                    <StackPanel Margin="12,0,0,0">
+                        <Label>Категория</Label>
+                        <ComboBox x:Name="cbCategory" DisplayMemberPath="Name" SelectedValuePath="CategoryId" Width="220"/>
+                    </StackPanel>
+                    <StackPanel Margin="12,0,0,0">
+                        <Label>Город</Label>
+                        <ComboBox x:Name="cbCity" DisplayMemberPath="Name" SelectedValuePath="CityId" Width="220"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                    <StackPanel>
+                        <Label>Тип объявления</Label>
+                        <ComboBox x:Name="cbType" DisplayMemberPath="Name" SelectedValuePath="AdTypeId" Width="180"/>
+                    </StackPanel>
+                    <StackPanel Margin="12,0,0,0">
+                        <Label>Статус</Label>
+                        <ComboBox x:Name="cbStatus" DisplayMemberPath="Name" SelectedValuePath="AdStatusId" Width="180"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Padding="8">
+                <StackPanel>
+                    <TextBlock Text="Фотографии" FontWeight="Bold"/>
+                    <ListBox x:Name="lbPhotos" Height="300" DisplayMemberPath="FileName" />
+                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                        <Button Content="Добавить фото" Click="BtnAddPhoto_Click" Width="110" />
+                        <Button Content="Сделать главным" Click="BtnSetMain_Click" Width="110" Margin="6,0,0,0"/>
+                        <Button Content="Удалить" Click="BtnRemovePhoto_Click" Width="80" Margin="6,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Click="BtnSave_Click" Width="100" Margin="0,0,8,0"/>
+            <Button Content="Отмена" Click="BtnCancel_Click" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Window>

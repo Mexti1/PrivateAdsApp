@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Logistics App</string>
+    
+    <!-- Общие -->
+    <string name="ok">OK</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="edit">Редактировать</string>
+    <string name="back">Назад</string>
+    <string name="refresh">Обновить</string>
+    <string name="search">Поиск</string>
+    <string name="loading">Загрузка...</string>
+    <string name="error">Ошибка</string>
+    
+    <!-- Навигация -->
+    <string name="nav_dashboard">Главная</string>
+    <string name="nav_orders">Заказы</string>
+    <string name="nav_tracking">Отслеживание</string>
+    <string name="nav_drivers">Водители</string>
+    <string name="nav_settings">Настройки</string>
+    
+    <!-- Заказы -->
+    <string name="orders_title">Заказы</string>
+    <string name="order_details">Детали заказа</string>
+    <string name="create_order">Создать заказ</string>
+    <string name="order_number">Номер заказа</string>
+    <string name="order_status">Статус</string>
+    <string name="order_client">Клиент</string>
+    <string name="order_pickup">Адрес загрузки</string>
+    <string name="order_delivery">Адрес доставки</string>
+    <string name="order_cargo">Груз</string>
+    <string name="order_weight">Вес</string>
+    <string name="order_volume">Объем</string>
+    <string name="order_price">Стоимость</string>
+    <string name="order_date">Дата</string>
+    <string name="order_driver">Водитель</string>
+    <string name="order_vehicle">Транспорт</string>
+    
+    <!-- Статусы -->
+    <string name="status_pending">Ожидает обработки</string>
+    <string name="status_confirmed">Подтвержден</string>
+    <string name="status_assigned">Назначен водитель</string>
+    <string name="status_in_transit">В пути</string>
+    <string name="status_delivered">Доставлен</string>
+    <string name="status_cancelled">Отменен</string>
+    
+    <!-- Отслеживание -->
+    <string name="tracking_title">Отслеживание груза</string>
+    <string name="tracking_number">Номер отслеживания</string>
+    <string name="tracking_current_location">Текущее местоположение</string>
+    <string name="tracking_estimated_arrival">Ожидаемое прибытие</string>
+    <string name="tracking_history">История перемещения</string>
+    
+    <!-- Дашборд -->
+    <string name="dashboard_title">Главная</string>
+    <string name="dashboard_statistics">Статистика</string>
+    <string name="dashboard_total_orders">Всего заказов</string>
+    <string name="dashboard_revenue">Доход</string>
+    <string name="dashboard_quick_actions">Быстрые действия</string>
+    
+    <!-- Сообщения -->
+    <string name="message_no_orders">Заказов не найдено</string>
+    <string name="message_order_created">Заказ создан</string>
+    <string name="message_order_updated">Заказ обновлен</string>
+    <string name="message_error_loading">Ошибка загрузки данных</string>
+    <string name="message_network_error">Ошибка подключения к сети</string>
+</resources>

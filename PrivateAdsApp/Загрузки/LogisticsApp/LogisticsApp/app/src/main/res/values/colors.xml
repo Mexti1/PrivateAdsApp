@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary colors -->
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="primary_light">#BBDEFB</color>
+    
+    <!-- Secondary colors -->
+    <color name="secondary">#03A9F4</color>
+    <color name="secondary_dark">#0277BD</color>
+    <color name="secondary_light">#B3E5FC</color>
+    
+    <!-- Status colors -->
+    <color name="status_pending">#FFA726</color>
+    <color name="status_confirmed">#42A5F5</color>
+    <color name="status_assigned">#26C6DA</color>
+    <color name="status_in_transit">#9CCC65</color>
+    <color name="status_delivered">#66BB6A</color>
+    <color name="status_cancelled">#EF5350</color>
+    
+    <!-- Basic colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#757575</color>
+    <color name="gray_light">#BDBDBD</color>
+    <color name="gray_dark">#424242</color>
+    
+    <!-- Background colors -->
+    <color name="background">#FAFAFA</color>
+    <color name="surface">#FFFFFF</color>
+    
+    <!-- Error colors -->
+    <color name="error">#F44336</color>
+    <color name="error_light">#FFCDD2</color>
+    
+    <!-- Success colors -->
+    <color name="success">#4CAF50</color>
+    <color name="success_light">#C8E6C9</color>
+    
+    <!-- Warning colors -->
+    <color name="warning">#FF9800</color>
+    <color name="warning_light">#FFE0B2</color>
+    
+    <!-- Info colors -->
+    <color name="info">#2196F3</color>
+    <color name="info_light">#BBDEFB</color>
+</resources>

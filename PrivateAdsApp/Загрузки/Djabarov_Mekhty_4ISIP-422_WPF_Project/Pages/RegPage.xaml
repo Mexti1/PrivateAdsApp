@@ -1,0 +1,23 @@
+<Page x:Class="Djabarov_Mekhty_4ISIP_422.Pages.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Регистрация">
+    <Grid HorizontalAlignment="Center" Width="600" Height="420">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="420">
+            <Label Content="Логин"/>
+            <TextBox x:Name="txtbxLog" Height="30"/>
+            <Label Content="Пароль" Margin="0,8,0,0"/>
+            <PasswordBox x:Name="passBxFrst" Height="30"/>
+            <Label Content="Повторите пароль" Margin="0,8,0,0"/>
+            <PasswordBox x:Name="passBxScnd" Height="30"/>
+            <Label Content="ФИО" Margin="0,8,0,0"/>
+            <TextBox x:Name="txtbxFIO" Height="30"/>
+            <Label Content="Роль" Margin="0,8,0,0"/>
+            <ComboBox x:Name="comboBxRole" Height="30">
+                <ComboBoxItem Content="User"/>
+                <ComboBoxItem Content="Admin"/>
+            </ComboBox>
+            <Button x:Name="regButton" Content="Зарегистрироваться" Click="regButton_Click" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
