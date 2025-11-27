@@ -3,47 +3,129 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Добавление / Редактирование объявления" 
         Height="650" Width="700" WindowStartupLocation="CenterScreen"
-        Background="#FFF5F5F5">
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+        Background="{StaticResource BackgroundColor}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Background="{StaticResource SurfaceColor}"
+                CornerRadius="8"
+                Margin="30"
+                Padding="40">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="15" Opacity="0.2" Direction="270"/>
+            </Border.Effect>
+            <StackPanel>
+                <!-- Заголовок -->
+                <Border Background="{StaticResource PrimaryColor}"
+                        CornerRadius="4"
+                        Padding="0,15"
+                        Margin="0,0,0,30">
+                    <TextBlock Text="Добавление / Редактирование объявления"
+                              FontSize="22"
+                              FontWeight="Bold"
+                              Foreground="White"
+                              HorizontalAlignment="Center"/>
+                </Border>
 
-        <TextBlock Text="Заголовок объявления" FontWeight="Bold" Margin="0,0,0,5"/>
-        <TextBox x:Name="TxtTitle" Grid.Row="0" Height="30" Margin="0,0,0,10"/>
+                <!-- Заголовок объявления -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="Заголовок объявления"
+                              Style="{StaticResource LabelTextBlock}"/>
+                    <TextBox x:Name="TxtTitle"
+                            Height="40"
+                            Style="{StaticResource ModernTextBox}"/>
+                </StackPanel>
 
-        <TextBlock Grid.Row="1" Text="Описание" FontWeight="Bold" Margin="0,0,0,5"/>
-        <TextBox x:Name="TxtDescription" Grid.Row="1" Height="100" TextWrapping="Wrap" 
-                 AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10"/>
+                <!-- Описание -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="Описание"
+                              Style="{StaticResource LabelTextBlock}"/>
+                    <TextBox x:Name="TxtDescription"
+                            Height="120"
+                            Style="{StaticResource ModernMultilineTextBox}"/>
+                </StackPanel>
 
-        <TextBlock Grid.Row="2" Text="Цена (руб.)" FontWeight="Bold" Margin="0,0,0,5"/>
-        <TextBox x:Name="TxtPrice" Grid.Row="2" Height="30" Margin="0,0,0,10"/>
+                <!-- Цена -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="Цена (руб.)"
+                              Style="{StaticResource LabelTextBlock}"/>
+                    <TextBox x:Name="TxtPrice"
+                            Height="40"
+                            Style="{StaticResource ModernTextBox}"/>
+                </StackPanel>
 
-        <TextBlock Grid.Row="3" Text="Город" FontWeight="Bold" Margin="0,0,0,5"/>
-        <ComboBox x:Name="CmbCity" Grid.Row="3" DisplayMemberPath="CityName" Height="30" Margin="0,0,0,10"/>
+                <!-- Город и Категория в одной строке -->
+                <Grid Margin="0,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="4" Text="Категория" FontWeight="Bold" Margin="0,0,0,5"/>
-        <ComboBox x:Name="CmbCategory" Grid.Row="4" DisplayMemberPath="CategoryName" Height="30" Margin="0,0,0,10"/>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Город"
+                                  Style="{StaticResource LabelTextBlock}"/>
+                        <ComboBox x:Name="CmbCity"
+                                 Height="40"
+                                 Style="{StaticResource ModernComboBox}"
+                                 DisplayMemberPath="CityName"/>
+                    </StackPanel>
 
-        <TextBlock Grid.Row="5" Text="Тип объявления" FontWeight="Bold" Margin="0,0,0,5"/>
-        <ComboBox x:Name="CmbType" Grid.Row="5" DisplayMemberPath="TypeName" Height="30" Margin="0,0,0,10"/>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Категория"
+                                  Style="{StaticResource LabelTextBlock}"/>
+                        <ComboBox x:Name="CmbCategory"
+                                 Height="40"
+                                 Style="{StaticResource ModernComboBox}"
+                                 DisplayMemberPath="CategoryName"/>
+                    </StackPanel>
+                </Grid>
 
-        <TextBlock Grid.Row="6" Text="Статус" FontWeight="Bold" Margin="0,0,0,5"/>
-        <ComboBox x:Name="CmbStatus" Grid.Row="6" DisplayMemberPath="StatusName" Height="30" Margin="0,0,0,20"/>
+                <!-- Тип и Статус в одной строке -->
+                <Grid Margin="0,0,0,30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-        <!-- Кнопки -->
-        <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Сохранить" Width="120" Height="40" Margin="10" Click="BtnSave_Click"/>
-            <Button Content="Отмена" Width="100" Height="40" Margin="10" IsCancel="True"/>
-        </StackPanel>
-    </Grid>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Тип объявления"
+                                  Style="{StaticResource LabelTextBlock}"/>
+                        <ComboBox x:Name="CmbType"
+                                 Height="40"
+                                 Style="{StaticResource ModernComboBox}"
+                                 DisplayMemberPath="TypeName"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Статус"
+                                  Style="{StaticResource LabelTextBlock}"/>
+                        <ComboBox x:Name="CmbStatus"
+                                 Height="40"
+                                 Style="{StaticResource ModernComboBox}"
+                                 DisplayMemberPath="StatusName"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Кнопки -->
+                <Grid Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Сохранить"
+                           Grid.Column="0"
+                           Height="45"
+                           Margin="0,0,10,0"
+                           Style="{StaticResource PrimaryButton}"
+                           Click="BtnSave_Click"/>
+                    <Button Content="Отмена"
+                           Grid.Column="1"
+                           Height="45"
+                           Margin="10,0,0,0"
+                           Style="{StaticResource SecondaryButton}"
+                           IsCancel="True"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
 </Window>

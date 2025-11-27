@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Завершённые объявления" Height="650" Width="1100" WindowStartupLocation="CenterScreen"
-        >
-    <Grid Margin="20">
+        Background="{StaticResource BackgroundColor}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -11,21 +11,61 @@
         </Grid.RowDefinitions>
 
         <!-- Заголовок + общая прибыль -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
-            <!--<Image Source="/Resources/logo.png" Width="60" Margin="0,0,15,0"/>-->
-            <TextBlock Text="Завершённые объявления" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
-            <TextBlock x:Name="TxtTotalProfit" FontSize="22" FontWeight="Bold" Foreground="#FF4CAF50" 
-                       Margin="40,0,0,0" VerticalAlignment="Center"/>
-        </StackPanel>
+        <Border Grid.Row="0"
+                Background="{StaticResource SurfaceColor}"
+                Padding="20,20"
+                Margin="20,20,20,0">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="12" Opacity="0.15" Direction="270"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <!--<Image Source="/Resources/logo.png" Width="60" Margin="0,0,20,0" Grid.Column="0"/>-->
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Завершённые объявления"
+                              FontSize="28"
+                              FontWeight="Bold"
+                              Foreground="{StaticResource TextPrimaryColor}"/>
+                    <TextBlock x:Name="TxtTotalProfit"
+                              FontSize="20"
+                              FontWeight="Bold"
+                              Foreground="{StaticResource SuccessColor}"
+                              Margin="0,5,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
         <!-- Список -->
-        <ListView x:Name="LvCompleted" Grid.Row="1">
+        <ListView x:Name="LvCompleted"
+                 Grid.Row="1"
+                 Margin="20"
+                 Style="{StaticResource ModernListView}"
+                 ItemContainerStyle="{StaticResource ModernListViewItem}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Ad.PostDate, StringFormat=dd.MM.yyyy}" Width="100"/>
-                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Ad.Title}" Width="350"/>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Ad.Price, StringFormat={}{0:N0} руб.}" Width="120"/>
-                    <GridViewColumn Header="Прибыль" DisplayMemberBinding="{Binding ProfitAmount, StringFormat={}{0:N0} руб.}" Width="130"/>
+                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Ad.Title}" Width="320"/>
+                    <GridViewColumn Header="Цена" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Ad.Price, StringFormat={}{0:N0} ₽}"
+                                          FontWeight="SemiBold"
+                                          Foreground="{StaticResource TextPrimaryColor}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Прибыль" Width="130">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ProfitAmount, StringFormat={}{0:N0} ₽}"
+                                          FontWeight="Bold"
+                                          Foreground="{StaticResource SuccessColor}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Город" DisplayMemberBinding="{Binding Ad.City.CityName}" Width="120"/>
                     <GridViewColumn Header="Категория" DisplayMemberBinding="{Binding Ad.Category.CategoryName}" Width="150"/>
                 </GridView>
@@ -33,7 +73,19 @@
         </ListView>
 
         <!-- Кнопка Назад -->
-        <Button Content="Назад" Grid.Row="2" Width="120" Height="40" HorizontalAlignment="Right" 
-                Margin="0,20,0,0" Click="BtnBack_Click"/>
+        <Border Grid.Row="2"
+                Background="{StaticResource SurfaceColor}"
+                Padding="20,15"
+                Margin="20,0,20,20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.1" Direction="270"/>
+            </Border.Effect>
+            <Button Content="Назад"
+                   Width="140"
+                   Height="40"
+                   HorizontalAlignment="Right"
+                   Style="{StaticResource SecondaryButton}"
+                   Click="BtnBack_Click"/>
+        </Border>
     </Grid>
 </Window>

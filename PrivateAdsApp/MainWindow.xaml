@@ -3,46 +3,119 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Сервис частных объявлений" Height="700" Width="1200" WindowStartupLocation="CenterScreen"
         >
-    <Grid Background="#FFF5F5F5">
+    <Grid Background="{StaticResource BackgroundColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <!-- Шапка -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#FF2196F3" Margin="0,0,0,10">
-            <!--<Image Source="/Resources/logo.png" Width="60" Margin="20,10"/>-->
-            <TextBlock Text="Сервис частных объявлений" Foreground="White" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
-            <Button x:Name="BtnLogin" Content="Войти" Width="100" Height="40" Margin="600,0,10,0" 
-                    HorizontalAlignment="Right" VerticalAlignment="Center" Click="BtnLogin_Click"/>
-        </StackPanel>
+        <Border Grid.Row="0" Background="{StaticResource PrimaryColor}" Padding="20,15">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="12" Opacity="0.2" Direction="270"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <!--<Image Source="/Resources/logo.png" Width="60" Margin="0,0,15,0" HorizontalAlignment="Left"/>-->
+                <TextBlock Text="Сервис частных объявлений"
+                          Style="{StaticResource HeaderTextBlock}"
+                          Margin="15,0,0,0"
+                          HorizontalAlignment="Left"/>
+                <Button x:Name="BtnLogin"
+                       Content="Войти"
+                       Width="120"
+                       Height="40"
+                       Grid.Column="1"
+                       Style="{StaticResource SecondaryButton}"
+                       Background="White"
+                       Foreground="{StaticResource PrimaryColor}"
+                       Click="BtnLogin_Click"/>
+            </Grid>
+        </Border>
 
         <!-- Фильтры -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10">
-            <TextBox x:Name="TxtSearch" Width="300" Height="30" Margin="5"/>
-            <ComboBox x:Name="CmbCity" Width="150" Margin="5" DisplayMemberPath="CityName"/>
-            <ComboBox x:Name="CmbCategory" Width="150" Margin="5" DisplayMemberPath="CategoryName"/>
-            <ComboBox x:Name="CmbType" Width="120" Margin="5" DisplayMemberPath="TypeName"/>
-            <ComboBox x:Name="CmbStatus" Width="120" Margin="5" DisplayMemberPath="StatusName"/>
-            <Button Content="Поиск" Width="100" Height="30" Margin="5" Click="BtnSearch_Click"/>
-        </StackPanel>
+        <Border Grid.Row="1"
+                Background="{StaticResource SurfaceColor}"
+                Padding="20,15"
+                Margin="20,20,20,0">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.1" Direction="270"/>
+            </Border.Effect>
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox x:Name="TxtSearch"
+                        Width="300"
+                        Height="35"
+                        Margin="5"
+                        Style="{StaticResource ModernTextBox}"
+                        Tag="Поиск по названию..."/>
+                <ComboBox x:Name="CmbCity"
+                         Width="150"
+                         Height="35"
+                         Margin="5"
+                         Style="{StaticResource ModernComboBox}"
+                         DisplayMemberPath="CityName"/>
+                <ComboBox x:Name="CmbCategory"
+                         Width="150"
+                         Height="35"
+                         Margin="5"
+                         Style="{StaticResource ModernComboBox}"
+                         DisplayMemberPath="CategoryName"/>
+                <ComboBox x:Name="CmbType"
+                         Width="130"
+                         Height="35"
+                         Margin="5"
+                         Style="{StaticResource ModernComboBox}"
+                         DisplayMemberPath="TypeName"/>
+                <ComboBox x:Name="CmbStatus"
+                         Width="130"
+                         Height="35"
+                         Margin="5"
+                         Style="{StaticResource ModernComboBox}"
+                         DisplayMemberPath="StatusName"/>
+                <Button Content="Поиск"
+                       Width="110"
+                       Height="35"
+                       Margin="5"
+                       Style="{StaticResource PrimaryButton}"
+                       Click="BtnSearch_Click"/>
+            </WrapPanel>
+        </Border>
 
         <!-- Список объявлений -->
-        <ListView x:Name="LvAds" Grid.Row="1" Margin="20" ItemsSource="{Binding}">
+        <ListView x:Name="LvAds"
+                 Grid.Row="2"
+                 Margin="20"
+                 Style="{StaticResource ModernListView}"
+                 ItemsSource="{Binding}"
+                 ItemContainerStyle="{StaticResource ModernListViewItem}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Фото" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding PhotoPath, FallbackValue=/Resources/no-photo.jpg}" Width="100" Height="100"/>
+                                <Border CornerRadius="4" Width="100" Height="100" ClipToBounds="True">
+                                    <Image Source="{Binding PhotoPath, FallbackValue=/Resources/no-photo.jpg}"
+                                          Stretch="UniformToFill"/>
+                                </Border>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Title}" Width="250"/>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="100"/>
+                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Title}" Width="280"/>
+                    <GridViewColumn Header="Цена" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Price, StringFormat={}{0:N0} ₽}"
+                                          FontWeight="SemiBold"
+                                          Foreground="{StaticResource SuccessColor}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Город" DisplayMemberBinding="{Binding City.CityName}" Width="120"/>
-                    <GridViewColumn Header="Категория" DisplayMemberBinding="{Binding Category.CategoryName}" Width="120"/>
+                    <GridViewColumn Header="Категория" DisplayMemberBinding="{Binding Category.CategoryName}" Width="140"/>
                     <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding PostDate, StringFormat=dd.MM.yyyy}" Width="100"/>
                 </GridView>
             </ListView.View>

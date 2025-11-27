@@ -3,51 +3,112 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Мои объявления" Height="700" Width="1200" WindowStartupLocation="CenterScreen"
         >
-    <Grid Background="#FFF5F5F5">
+    <Grid Background="{StaticResource BackgroundColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Заголовок -->
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#FF2196F3">
-            <!--<Image Source="/Resources/logo.png" Width="60" Margin="20,10"/>-->
-            <TextBlock Text="Мои объявления" Foreground="White" FontSize="28" FontWeight="Bold" 
-                       VerticalAlignment="Center" Margin="10,0"/>
-            <Button Content="Назад" Width="100" Height="40" HorizontalAlignment="Right" 
-                    Margin="20" Click="BtnBack_Click"/>
-        </StackPanel>
-
-        <!-- Кнопки управления -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Добавить объявление" Width="180" Height="40" Margin="10" 
-                    Click="BtnAdd_Click"/>
-            <Button x:Name="BtnEdit" Content="Редактировать" Width="120" Height="40" Margin="10" 
-                    IsEnabled="False" Click="BtnEdit_Click"/>
-            <Button x:Name="BtnDelete" Content="Удалить" Width="100" Height="40" Margin="10" 
-                    IsEnabled="False" Click="BtnDelete_Click"/>
-            <Button Content="Завершённые объявления" Width="200" Height="40" Margin="10" 
-                    Click="BtnCompleted_Click"/>
-        </StackPanel>
+        <Border Grid.Row="0" Background="{StaticResource PrimaryColor}" Padding="20,15">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" BlurRadius="12" Opacity="0.2" Direction="270"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <!--<Image Source="/Resources/logo.png" Width="60" Margin="0,0,15,0" HorizontalAlignment="Left"/>-->
+                <TextBlock Text="Мои объявления"
+                          Style="{StaticResource HeaderTextBlock}"
+                          Margin="15,0,0,0"
+                          HorizontalAlignment="Left"/>
+                <Button Content="Назад"
+                       Grid.Column="1"
+                       Width="120"
+                       Height="40"
+                       Style="{StaticResource SecondaryButton}"
+                       Background="White"
+                       Foreground="{StaticResource PrimaryColor}"
+                       Click="BtnBack_Click"/>
+            </Grid>
+        </Border>
 
         <!-- Список моих объявлений -->
-        <ListView x:Name="LvMyAds" Grid.Row="1" Margin="20" SelectionChanged="LvMyAds_SelectionChanged">
+        <ListView x:Name="LvMyAds"
+                 Grid.Row="1"
+                 Margin="20"
+                 Style="{StaticResource ModernListView}"
+                 ItemContainerStyle="{StaticResource ModernListViewItem}"
+                 SelectionChanged="LvMyAds_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Фото" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="/Resources/no-photo.jpg" Width="100" Height="100"/>
+                                <Border CornerRadius="4" Width="100" Height="100" ClipToBounds="True">
+                                    <Image Source="/Resources/no-photo.jpg" Stretch="UniformToFill"/>
+                                </Border>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Title}" Width="300"/>
-                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="100"/>
-                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding AdStatus.StatusName}" Width="100"/>
+                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Title}" Width="350"/>
+                    <GridViewColumn Header="Цена" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Price, StringFormat={}{0:N0} ₽}"
+                                          FontWeight="SemiBold"
+                                          Foreground="{StaticResource SuccessColor}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding AdStatus.StatusName}" Width="120"/>
                     <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding PostDate, StringFormat=dd.MM.yyyy}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <!-- Кнопки управления -->
+        <Border Grid.Row="2"
+                Background="{StaticResource SurfaceColor}"
+                Padding="20,15"
+                Margin="20,0,20,20">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="1" BlurRadius="8" Opacity="0.1" Direction="270"/>
+            </Border.Effect>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button Content="Добавить объявление"
+                       Width="180"
+                       Height="40"
+                       Margin="5"
+                       Style="{StaticResource PrimaryButton}"
+                       Click="BtnAdd_Click"/>
+                <Button x:Name="BtnEdit"
+                       Content="Редактировать"
+                       Width="140"
+                       Height="40"
+                       Margin="5"
+                       Style="{StaticResource PrimaryButton}"
+                       Background="{StaticResource WarningColor}"
+                       IsEnabled="False"
+                       Click="BtnEdit_Click"/>
+                <Button x:Name="BtnDelete"
+                       Content="Удалить"
+                       Width="110"
+                       Height="40"
+                       Margin="5"
+                       Style="{StaticResource DangerButton}"
+                       IsEnabled="False"
+                       Click="BtnDelete_Click"/>
+                <Button Content="Завершённые объявления"
+                       Width="210"
+                       Height="40"
+                       Margin="5"
+                       Style="{StaticResource SecondaryButton}"
+                       Click="BtnCompleted_Click"/>
+            </WrapPanel>
+        </Border>
     </Grid>
 </Window>
