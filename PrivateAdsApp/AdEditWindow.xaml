@@ -1,0 +1,49 @@
+﻿<Window x:Class="PrivateAdsApp.Windows.AdEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавление / Редактирование объявления" 
+        Height="650" Width="700" WindowStartupLocation="CenterScreen"
+        Background="#FFF5F5F5">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Заголовок объявления" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBox x:Name="TxtTitle" Grid.Row="0" Height="30" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="1" Text="Описание" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBox x:Name="TxtDescription" Grid.Row="1" Height="100" TextWrapping="Wrap" 
+                 AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="2" Text="Цена (руб.)" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBox x:Name="TxtPrice" Grid.Row="2" Height="30" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="3" Text="Город" FontWeight="Bold" Margin="0,0,0,5"/>
+        <ComboBox x:Name="CmbCity" Grid.Row="3" DisplayMemberPath="CityName" Height="30" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="4" Text="Категория" FontWeight="Bold" Margin="0,0,0,5"/>
+        <ComboBox x:Name="CmbCategory" Grid.Row="4" DisplayMemberPath="CategoryName" Height="30" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="5" Text="Тип объявления" FontWeight="Bold" Margin="0,0,0,5"/>
+        <ComboBox x:Name="CmbType" Grid.Row="5" DisplayMemberPath="TypeName" Height="30" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="6" Text="Статус" FontWeight="Bold" Margin="0,0,0,5"/>
+        <ComboBox x:Name="CmbStatus" Grid.Row="6" DisplayMemberPath="StatusName" Height="30" Margin="0,0,0,20"/>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Сохранить" Width="120" Height="40" Margin="10" Click="BtnSave_Click"/>
+            <Button Content="Отмена" Width="100" Height="40" Margin="10" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

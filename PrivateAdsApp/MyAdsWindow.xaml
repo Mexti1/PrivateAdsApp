@@ -1,0 +1,53 @@
+﻿<Window x:Class="PrivateAdsApp.Windows.MyAdsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Мои объявления" Height="700" Width="1200" WindowStartupLocation="CenterScreen"
+        >
+    <Grid Background="#FFF5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#FF2196F3">
+            <!--<Image Source="/Resources/logo.png" Width="60" Margin="20,10"/>-->
+            <TextBlock Text="Мои объявления" Foreground="White" FontSize="28" FontWeight="Bold" 
+                       VerticalAlignment="Center" Margin="10,0"/>
+            <Button Content="Назад" Width="100" Height="40" HorizontalAlignment="Right" 
+                    Margin="20" Click="BtnBack_Click"/>
+        </StackPanel>
+
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Добавить объявление" Width="180" Height="40" Margin="10" 
+                    Click="BtnAdd_Click"/>
+            <Button x:Name="BtnEdit" Content="Редактировать" Width="120" Height="40" Margin="10" 
+                    IsEnabled="False" Click="BtnEdit_Click"/>
+            <Button x:Name="BtnDelete" Content="Удалить" Width="100" Height="40" Margin="10" 
+                    IsEnabled="False" Click="BtnDelete_Click"/>
+            <Button Content="Завершённые объявления" Width="200" Height="40" Margin="10" 
+                    Click="BtnCompleted_Click"/>
+        </StackPanel>
+
+        <!-- Список моих объявлений -->
+        <ListView x:Name="LvMyAds" Grid.Row="1" Margin="20" SelectionChanged="LvMyAds_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Фото" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/Resources/no-photo.jpg" Width="100" Height="100"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Заголовок" DisplayMemberBinding="{Binding Title}" Width="300"/>
+                    <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" Width="100"/>
+                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding AdStatus.StatusName}" Width="100"/>
+                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding PostDate, StringFormat=dd.MM.yyyy}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
