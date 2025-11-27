@@ -102,16 +102,16 @@
                                               Stretch="UniformToFill"/>
                                     </Border>
                                     <!-- Иконка категории -->
-                                    <Border Width="30" Height="30"
-                                           CornerRadius="15"
+                                    <Border Width="60" Height="60"
+                                           CornerRadius="30"
                                            Background="White"
                                            HorizontalAlignment="Right"
                                            VerticalAlignment="Bottom"
                                            Margin="0,0,5,5">
                                         <Border.Effect>
-                                            <DropShadowEffect ShadowDepth="1" BlurRadius="4" Opacity="0.3"/>
+                                            <DropShadowEffect ShadowDepth="2" BlurRadius="8" Opacity="0.4"/>
                                         </Border.Effect>
-                                        <Image Width="20" Height="20"
+                                        <Image Width="45" Height="45"
                                               Source="/Resources/icon-electronics.png"
                                               Stretch="Uniform"/>
                                     </Border>
