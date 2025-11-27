@@ -14,14 +14,15 @@
             </Border.Effect>
             <StackPanel>
                 <!-- Заголовок -->
-                <Border Background="{StaticResource PrimaryColor}"
-                        CornerRadius="4"
+                <Border Background="{StaticResource SurfaceColor}"
+                        BorderBrush="{StaticResource BorderColor}"
+                        BorderThickness="0,0,0,2"
                         Padding="0,15"
                         Margin="0,0,0,30">
                     <TextBlock Text="Добавление / Редактирование объявления"
                               FontSize="22"
                               FontWeight="Bold"
-                              Foreground="White"
+                              Foreground="{StaticResource TextPrimaryColor}"
                               HorizontalAlignment="Center"/>
                 </Border>
 

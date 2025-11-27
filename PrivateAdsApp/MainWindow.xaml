@@ -11,28 +11,27 @@
         </Grid.RowDefinitions>
 
         <!-- Шапка -->
-        <Border Grid.Row="0" Background="{StaticResource PrimaryColor}" Padding="20,15">
+        <Border Grid.Row="0" Background="{StaticResource SurfaceColor}" Padding="20,15" BorderBrush="{StaticResource BorderColor}" BorderThickness="0,0,0,2">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="2" BlurRadius="12" Opacity="0.2" Direction="270"/>
             </Border.Effect>
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <!--<Image Source="/Resources/logo.png" Width="60" Margin="0,0,15,0" HorizontalAlignment="Left"/>-->
+                <Image Source="/Resources/vozvrat-tovara.png" Width="60" Margin="0,0,20,0" Grid.Column="0"/>
                 <TextBlock Text="Сервис частных объявлений"
                           Style="{StaticResource HeaderTextBlock}"
-                          Margin="15,0,0,0"
+                          Grid.Column="1"
                           HorizontalAlignment="Left"/>
                 <Button x:Name="BtnLogin"
                        Content="Войти"
                        Width="120"
                        Height="40"
-                       Grid.Column="1"
-                       Style="{StaticResource SecondaryButton}"
-                       Background="White"
-                       Foreground="{StaticResource PrimaryColor}"
+                       Grid.Column="2"
+                       Style="{StaticResource PrimaryButton}"
                        Click="BtnLogin_Click"/>
             </Grid>
         </Border>
@@ -98,7 +97,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="4" Width="100" Height="100" ClipToBounds="True">
-                                    <Image Source="{Binding PhotoPath, FallbackValue=/Resources/no-photo.jpg}"
+                                    <Image Source="{Binding PhotoPath, FallbackValue=/Resources/vozvrat-tovara.png}"
                                           Stretch="UniformToFill"/>
                                 </Border>
                             </DataTemplate>
