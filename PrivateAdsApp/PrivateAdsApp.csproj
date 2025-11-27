@@ -191,6 +191,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\vozvrat-tovara.png" />
+    <Resource Include="Resources\icon-electronics.png" />
+    <Resource Include="Resources\icon-clothes.png" />
+    <Resource Include="Resources\icon-transport.png" />
+    <Resource Include="Resources\icon-realty.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

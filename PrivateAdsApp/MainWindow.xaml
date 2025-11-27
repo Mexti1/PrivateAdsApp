@@ -96,10 +96,26 @@
                     <GridViewColumn Header="Фото" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Border CornerRadius="4" Width="100" Height="100" ClipToBounds="True">
-                                    <Image Source="{Binding PhotoPath, FallbackValue=/Resources/vozvrat-tovara.png}"
-                                          Stretch="UniformToFill"/>
-                                </Border>
+                                <Grid Width="100" Height="100">
+                                    <Border CornerRadius="4" ClipToBounds="True">
+                                        <Image Source="{Binding PhotoPath, FallbackValue=/Resources/vozvrat-tovara.png}"
+                                              Stretch="UniformToFill"/>
+                                    </Border>
+                                    <!-- Иконка категории -->
+                                    <Border Width="30" Height="30"
+                                           CornerRadius="15"
+                                           Background="White"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Bottom"
+                                           Margin="0,0,5,5">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="1" BlurRadius="4" Opacity="0.3"/>
+                                        </Border.Effect>
+                                        <Image Width="20" Height="20"
+                                              Source="/Resources/icon-electronics.png"
+                                              Stretch="Uniform"/>
+                                    </Border>
+                                </Grid>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
